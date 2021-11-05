@@ -32,6 +32,11 @@ export class RecipeService {
     return this.recipes.slice(); // return recipes and call slice with no argument to return a new array which is a copy of the one in this service file => only get a copy
   }
 
+  getRecipe(index: number) {
+    return this.recipes[index];          //return this recipes and select the index(id)
+  }       //load a recipe item by id with getRecipe method which takes an id of type number
+
+
   addIngredientsToShoppingList(ingresients: Ingredient[]) { //receive ingredients of type Ingredient
     this.slService.addIngredients(ingresients);  //access the shopping list service and call addIngredients and pass ingredients to that service
   }

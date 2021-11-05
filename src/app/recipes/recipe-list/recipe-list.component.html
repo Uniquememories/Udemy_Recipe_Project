@@ -7,7 +7,11 @@
 <div class="row">
     <div class="col-xs-12">
         <app-recipe-item
-          *ngFor="let recipeEL of recipes"
-          [recipe]="recipeEL"></app-recipe-item>
+          *ngFor="let recipeEL of recipes; let i = index"
+          [recipe]="recipeEL"
+          [index]="i"></app-recipe-item>
     </div>
 </div>
+
+<!-- pass the [index] and pass the index i & bind to the index property
+  // retrieve the index from *ngFor loop binding i to index to get the index on each iteration -->

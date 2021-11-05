@@ -2,8 +2,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes *ngIf="loadedFeature === 'recipe'"></app-recipes>
-      <app-shopping-list *ngIf="loadedFeature !== 'recipe'"></app-shopping-list>
+      <router-outlet></router-outlet>
+      <!-- router-outlet => mark place where Angular router should render component we should load depending on the path we are at  -->
     </div>
   </div>
 </div>
