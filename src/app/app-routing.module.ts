@@ -1,3 +1,4 @@
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
@@ -10,7 +11,9 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' }, //redirect to /recipes //must add the pathMatch and set to full and only redirect if the full path is empty
   { path: 'recipes', component: RecipesComponent, children: [   //localhost:4200/recipes
     { path: '', component: RecipeStartComponent },  //empty path /recipies/nothing => default case
+    { path: 'new', component: RecipeEditComponent }, //new path for edit recipes
     { path: ':id', component: RecipeDetailComponent }, //dynamic segment added after /recipes (/recipes/id)
+    { path: ':id/edit', component: RecipeEditComponent }, //to have id available in the route to load it and have /edit to be clear we are in edit mode
   ] },
     { path: 'shopping-list', component: ShoppingListComponent },
 ]

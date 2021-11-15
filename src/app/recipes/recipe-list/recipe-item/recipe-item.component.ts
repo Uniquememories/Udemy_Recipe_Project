@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RecipeItemComponent implements OnInit {
   @Input() recipe: Recipe;
-  @Input() index: number; //to get the id => can pass in the index of the item from outside the recipe-list component
+  @Input() index: number; //to get the id => can pass in the index of the item from outside the recipe-list component 
 
   // constructor(private recipeService: RecipeService) { } //inject recipe service
 

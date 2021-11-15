@@ -1,6 +1,7 @@
 <a
   style="cursor: pointer;"
   [routerLink]="[index]"
+  routerLinkActive="active"
   class="list-group-item clearfix">
   <div class="pull-left">
     <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
@@ -17,3 +18,4 @@
 
 <!-- Passing dynamic parameters to links:: bind [routerLink] => pass array to allow configure segment for segment of the path // pass the [index] for a single componet so that index will be different for each instance of the component -->
 <!-- style="cursor: pointer;" => adds the hand cursor when selecting -->
+<!-- Make links active by adding dynamically with directive => routerLinkActive = "active" -->

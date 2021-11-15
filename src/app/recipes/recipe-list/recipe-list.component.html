@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <button class="btn btn-success">New Recipe</button>
+        <button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button>
     </div>
 </div>
 <hr>
@@ -14,4 +14,5 @@
 </div>
 
 <!-- pass the [index] and pass the index i & bind to the index property
-  // retrieve the index from *ngFor loop binding i to index to get the index on each iteration -->
+  // retrieve the index from *ngFor loop binding let i = index to get the index on each iteration -->
+  <!-- add click listener to New Recipe button to activate the link -->
