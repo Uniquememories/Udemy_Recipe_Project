@@ -6,8 +6,11 @@
             <a
             class="list-group-item"
             style="cursor: pointer"
-            *ngFor="let ingredient of ingredients"
+            *ngFor="let ingredient of ingredients; let i = index"
+            (click)="onEditItem(i)"
             >
+            <!-- add click listener to click on the shopping list items & call onEditItem // Get id of the ingredents in ngFor (let i =index) & pass i to onEditItem-->
+            <!-- make items editable -->
             {{ ingredient.name }} ({{ ingredient.amount }})
         </a>
         </ul>

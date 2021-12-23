@@ -1,1 +1,75 @@
-<p>recipe-edit works!</p>
+<div class="row">
+  <div class="col-xs-12">
+    <form>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-success">Save</button>
+          <button type="button" class="btn btn-danger">Cancel</button>
+          <!-- Create a form => add a rows & columns to span the width of all device sizes: Add buttons of type submit of class button btn-success (means the button will be green) and name the button save // second button of type button (so wont submit) of class btn-danger (red) named cancel to cancel the editing -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imagePath">Image URL</label>
+            <input
+              type="text"
+              id="imagePath"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <!-- rows with default column widths // add a div with class form-group (for styling) // add a label for the name & imagePath of the recipie // input of type text with id name & imagePath (so the user can paste in the imagePath) & class of form control to make it look nice -->
+      <div class="row">
+        <div class="col-xs-12">
+          <img src="" class="img-responsive">
+        </div>
+      </div>
+      <!-- another row to preview what image the user entered // add image element<img> and bind the source (src) and assign the image responsive class to it -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              type="text"
+              id="imagePath"
+              class="form-control"
+              rows="6"></textarea>
+          </div>
+        </div>
+      </div>
+      <!-- add another row with description label for the description of the recipe // of type textarea with 6 rows for typing so the user can enter in the description -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-xs-8">
+            <input
+              type="text"
+              class="form-control">
+            </div>
+            <div class="col-xs-2">
+              <input
+                type="number"
+                class="form-control">
+            </div>
+            <div class="col-xs-2">
+              <button class="btn btn-danger">X</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- another div required for the ingredients of the recipe // need to create an array of controls => multiple rows W/ button to delete an ingredient -->
+    </form>
+  </div>
+</div>
