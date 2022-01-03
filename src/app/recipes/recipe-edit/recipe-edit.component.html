@@ -1,10 +1,15 @@
 <div class="row">
   <div class="col-xs-12">
-    <form>
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+      <!-- use formGroup to connect the form (syncing HTML with the form) => use property binding to pass in the recipeForm data / Make sure Angular takes in our recipeForm // to be able to see something set up ngSubmit listener and listen to onSubmit -->
       <div class="row">
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-success">Save</button>
-          <button type="button" class="btn btn-danger">Cancel</button>
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!recipeForm.valid">Save</button>
+            <!-- bind to disabled and check if the recipe form is valid (for validators on recipe-edit.component.ts form) -->
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
           <!-- Create a form => add a rows & columns to span the width of all device sizes: Add buttons of type submit of class button btn-success (means the button will be green) and name the button save // second button of type button (so wont submit) of class btn-danger (red) named cancel to cancel the editing -->
         </div>
       </div>
@@ -15,6 +20,7 @@
             <input
               type="text"
               id="name"
+              formControlName="name"
               class="form-control">
           </div>
         </div>
@@ -26,14 +32,16 @@
             <input
               type="text"
               id="imagePath"
-              class="form-control">
+              formControlName="imagePath"
+              class="form-control"
+              #imagePath>
           </div>
         </div>
       </div>
       <!-- rows with default column widths // add a div with class form-group (for styling) // add a label for the name & imagePath of the recipie // input of type text with id name & imagePath (so the user can paste in the imagePath) & class of form control to make it look nice -->
       <div class="row">
         <div class="col-xs-12">
-          <img src="" class="img-responsive">
+          <img [src]="imagePath.value" class="img-responsive">
         </div>
       </div>
       <!-- another row to preview what image the user entered // add image element<img> and bind the source (src) and assign the image responsive class to it -->
@@ -45,26 +53,48 @@
               type="text"
               id="imagePath"
               class="form-control"
+              formControlName="description"
               rows="6"></textarea>
           </div>
         </div>
       </div>
       <!-- add another row with description label for the description of the recipe // of type textarea with 6 rows for typing so the user can enter in the description -->
       <div class="row">
-        <div class="col-xs-12">
-          <div class="row">
+        <div class="col-xs-12" formArrayName="ingredients">
+          <div
+            class="row"
+            *ngFor="let ingredientCtrl of controls; let i = index"
+            [formGroupName]="i"
+            style="margin-top: 10px;">
+            <!-- formArrayName directive is bound to the ingredients (the name of the form array in the recipe-edit.components.ts file) -->
+            <!-- use *ngFor to loop through ingredient control of the recipeForm and get the ingredients controls // extract the index of the current iteration , which will be the formGroupName => (bind i to the formGroupName) -->
             <div class="col-xs-8">
             <input
               type="text"
-              class="form-control">
+              class="form-control"
+              formControlName="name">
             </div>
             <div class="col-xs-2">
               <input
                 type="number"
-                class="form-control">
+                class="form-control"
+                formControlName="amount">
             </div>
             <div class="col-xs-2">
-              <button class="btn btn-danger">X</button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="onDeleteIngredient(i)">X</button>
+                <!-- onDeleteIngredient method => pass the index i of the index of the ingredient that we will be deleting -->
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-xs-12">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="onAddIngredient()">Add Ingredient</button>
             </div>
           </div>
         </div>

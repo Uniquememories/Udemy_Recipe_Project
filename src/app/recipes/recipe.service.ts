@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { ShoppingListService } from './../shopping-list/shopping-list.service';
 import { Ingredient } from './../shared/ingredient.model';
 import { Injectable } from '@angular/core';
@@ -5,6 +6,7 @@ import { Recipe } from "./recipe.model";
 
 @Injectable()
 export class RecipeService {
+  recipesChanged = new Subject<Recipe[]>();
 
   private recipes: Recipe[] = [ //recipes array
     new Recipe(
@@ -36,7 +38,22 @@ export class RecipeService {
   }       //load a recipe item by id with getRecipe method which takes an id of type number
 
 
-  addIngredientsToShoppingList(ingresients: Ingredient[]) { //receive ingredients of type Ingredient
-    this.slService.addIngredients(ingresients);  //access the shopping list service and call addIngredients and pass ingredients to that service
+  addIngredientsToShoppingList(ingredients: Ingredient[]) { //receive ingredients of type Ingredient
+    this.slService.addIngredients(ingredients);  //access the shopping list service and call addIngredients and pass ingredients to that service
+  }
+
+  addRecipe(recipe: Recipe) {     //get a recipe of type recipe
+   this.recipes.push(recipe);     //take recipe array and push a rew recipe on it
+   this.recipesChanged.next(this.recipes.slice());  //use recipesChanged event & emit a new value- a copy of the recipes
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe) {  //get the index of the recipe I should I should update & the new recipe of type recipe
+    this.recipes[index] = newRecipe;                //take recipes array at the index and set equal to new recipe
+    this.recipesChanged.next(this.recipes.slice());  //use recipesChanged event & emit a new value- a copy of the recipes
+  }
+
+  deleteRecipe(index: number) {   //get the index of the recipe
+    this.recipes.splice(index, 1);                      //use recipes array and call the splice method to splice at the index 1 element to remove it
+    this.recipesChanged.next(this.recipes.slice());     //call recipesChanged & emit a copy of the updated recipes
   }
 }

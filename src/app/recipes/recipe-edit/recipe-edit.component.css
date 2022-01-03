@@ -1,0 +1,5 @@
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+/* place a solid red border around the input / text area when there is an invalid input & ng-touched so border only appears when the area is clicked into and not from the start */
