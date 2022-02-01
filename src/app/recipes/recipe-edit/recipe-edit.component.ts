@@ -10,8 +10,8 @@ import { RecipeService } from './../recipe.service';
   styleUrls: ['./recipe-edit.component.css']
 })
 export class RecipeEditComponent implements OnInit {
-  id: number;                                           //store the id w/ property name
-  editMode = false;                                   //store edit recipe in new property set to false to assume we are creating a new recipe and not in edit mode
+  id: number;                                      //store the id w/ property name
+  editMode = false;                                //store edit recipe in new property set to false to assume we are creating a new recipe and not in edit mode
   recipeForm: FormGroup;                          //form is a property of type FormGroup (imported)
 
   constructor(private route: ActivatedRoute,
