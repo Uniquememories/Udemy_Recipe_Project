@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3"> <!-- col-xs-12 takes the width of all screen sizes / col-md-6 narrow column / col-md-offset-3 makes it centered-->
+    <div class="alert alert-danger" *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+    <!-- to disaply error alert :: error from the ts file :: ngIf to show only if we have an error  -->
+    <div *ngIf="isLoading" style="text-align: center;">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <!-- if we are loading we want to show the loading spinner -->
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading"> <!-- sign up and log in form & disable the button if form is not valid with a local reference #authForm set equal to ngForm // ngSubmit to submit the entire authForm when the onSubmit button is triggered -->
+      <!-- use ngIf to check if the form is NOT Loading and only display the form if the it is not loading -->
+      <div class="form-group">
+        <label for="email">E-Mail</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          ngModel
+          name="email"
+          required
+          email
+          />
+          <!-- add the validation of required to make the field required and email to make sure its a valid email -->
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          ngModel
+          name="password"
+          required
+          minlength="6"
+        />
+        <!-- add the validation of required to make the field required and the password length at least 6 characters -->
+      </div>
+      <div>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!authForm.valid"
+        >
+          {{ isLoginMode? 'Login' : 'Sign Up' }}
+        </button>
+        |
+        <button class="btn btn-primary" (click)="onSwitchMode()" type="button">
+          Switch to {{ isLoginMode? 'Sign Up' : 'Login' }}
+        </button>
+        <!-- use string interpolation to dynamically change the button, if it isLoginMode, then the button will display login or if not true (not inLoginMode) then display Sign Up // [disable] the form if these fields are not valid => submit button is then disabled -->
+      </div>
+    </form>
+  </div>
+</div>
