@@ -6,9 +6,8 @@ import { Directive, ElementRef, HostBinding, HostListener } from "@angular/core"
 export class DropdownDirective {
   @HostBinding('class.open') isOpen = false
 
-  @HostListener('document:click', ['$event']) toggleOpen(event: Event) {   //Listening to a click event
-    this.isOpen = this.elRef.nativeElement.contains(event.target) ?!this.isOpen : false;
+  @HostListener('click') toggleOpen() {   //Listening to a click event
+    this.isOpen = !this.isOpen;
   }
-  constructor(private elRef: ElementRef) {}
 }
 

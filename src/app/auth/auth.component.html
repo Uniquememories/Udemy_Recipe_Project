@@ -1,9 +1,14 @@
+<ng-template appPlaceholder></ng-template>
+<!-- use ngTemplate to get access to a place within a dom -> does not render to the dom // considered when it parses the template but not rendered to the dom -->
 <div class="row">
-  <div class="col-xs-12 col-md-6 col-md-offset-3"> <!-- col-xs-12 takes the width of all screen sizes / col-md-6 narrow column / col-md-offset-3 makes it centered-->
-    <div class="alert alert-danger" *ngIf="error">
+  <div class="col-xs-12 col-md-6 col-md-offset-3"> <!-- col-xs-12 takes the width of all screen sizes / col-md-6 narrow column / col-md-offset-3 makes it centered -->
+    <!-- <div class="alert alert-danger" *ngIf="error">
       <p>{{ error }}</p>
-    </div>
+    </div> -->
     <!-- to disaply error alert :: error from the ts file :: ngIf to show only if we have an error  -->
+    <!-- <app-alert [message]="error" *ngIf="error" (close)="onHandleError()"></app-alert> -->
+    <!-- set the message property to error & show only if we have an error with *ngIf ==> simplest way and the best way over the hostContainer with appPlaceholder-->
+    <!-- close w/ onHandleError method to reset the error popup alert-->
     <div *ngIf="isLoading" style="text-align: center;">
       <app-loading-spinner></app-loading-spinner>
     </div>

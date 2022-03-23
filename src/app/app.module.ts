@@ -20,6 +20,8 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeService } from './recipes/recipe.service';
 import { AuthComponent } from './auth/auth.component';
+import { AlertComponent } from './shared/alert/alert.component';
+import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { AuthComponent } from './auth/auth.component';
     RecipeStartComponent,
     RecipeEditComponent,
     AuthComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    AlertComponent,
+    PlaceholderDirective
   ],
   imports: [
     BrowserModule,
@@ -54,6 +58,7 @@ import { AuthComponent } from './auth/auth.component';
       multi: true
     } //HTTP_INTERCEPTORS is the identifier for the provider:: the class used to instantiate for the token is AuthInterceptorService:: set multi to true to allow for multi interceptors
     ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AlertComponent]   //an array of components to complile when NgModule is defined so it can be dynamically loaded into the view
 })
 export class AppModule { }

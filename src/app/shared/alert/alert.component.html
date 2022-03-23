@@ -1,0 +1,10 @@
+<div class="backdrop" (click)="onClose()"></div>
+<!-- backdrop a box rendered immediately beneath any element being presented in fullscreen mode and on top of the older fullscreen elements :: It ensures the focus is on the alert box ::click listener for onClose method to close the alert pop up if click the backdrop-->
+<div class="alert-box">
+  <p>{{ message }}</p>
+  <!-- output the alert message with string interpolation -->
+  <div class="alert-box-actions">
+    <button class="btn btn-primary" (click)="onClose()">Close</button>
+    <!-- button to close the alert box w/ click listener for onClose method to close the alert pop up if click the close button -->
+  </div>
+</div>
